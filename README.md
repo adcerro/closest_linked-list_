@@ -6,8 +6,7 @@ Testing different approaches to determine the closest pair of points of a set of
 * [Sources](#Sources)
 
 ## General info
-This is the third hand-in of the computational project
-of discrete structures.
+This is the final lab for algorithms and complexity class
 
 ## Technologies
 * Java 17
