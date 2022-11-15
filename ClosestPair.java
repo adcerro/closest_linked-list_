@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 
 public class ClosestPair {
@@ -26,7 +28,7 @@ public class ClosestPair {
 
     public static void main(String[] args) {
         //testBrute("brute.txt");
-        testDivide("divide.txt");
+        //testDivide("divide.txt");
     }
 
     //Performs the test with the BruteForce algorithm
@@ -130,7 +132,6 @@ public class ClosestPair {
                 j++;
             }
         }
-        //Collections.sort(pointList);
     }
 
     /**

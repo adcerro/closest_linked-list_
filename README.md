@@ -14,7 +14,8 @@ This is the final lab for algorithms and complexity class
 
 ## Sources
 Guide for the readme [here](https://github.com/ritaly/README-cheatsheet/blob/master/README.md)! \
-Guide for LinkedList implementation using generics [here!](https://www.geeksforgeeks.org/java-implementing-iterator-and-iterable-interface/)
+Guide for LinkedList implementation using generics [here!](https://www.geeksforgeeks.org/java-implementing-iterator-and-iterable-interface/)\
+Guide for [sorting](https://stackoverflow.com/questions/24726675/sorting-custom-linked-list-in-java) 
 
 ## Contact
 Created by [@alandfc](https://www.t.me/alandfc)
