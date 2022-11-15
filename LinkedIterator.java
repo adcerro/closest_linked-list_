@@ -2,7 +2,7 @@ package closest.pair;
 
 import java.util.Iterator;
 
-public class LinkedIterator<T> implements Iterator<T> {
+public class LinkedIterator<T extends Comparable<T>> implements Iterator<T> {
     LinkedList<T> list;
     Node<T> current;
     LinkedIterator(LinkedList<T> list){

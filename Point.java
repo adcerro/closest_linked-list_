@@ -27,7 +27,9 @@ public final class Point implements Comparable<Point> {
 
     @Override
     /**
-     * This implementation fo comparable prevents the existence of two points with the same x value
+     * This implementation fo comparable prevents the existence of two points with the same x value<p>
+     * Input: Another point to compare<p>
+     * Output: The difference between the point's x and the provided point x's value <p>
      * */
     public int compareTo(Point o) {
         return this.x - o.x;

@@ -2,7 +2,7 @@ package closest.pair;
 
 import java.util.Iterator;
 
-public class LinkedList<T> implements Iterable<T> {
+public class LinkedList<T extends Comparable<T>> implements Iterable<T> {
     private Node<T> head;
     private int size;
 
@@ -39,11 +39,11 @@ public class LinkedList<T> implements Iterable<T> {
             return 0;
         }else{
             Node<T> p = head;
-            while (p.getNext() != null && !p.getData().equals(object)) {
+            while (p.getNext() != null && p.getData().compareTo(object)!=0) {
                 p = p.getNext();
                 index++;
             }
-            if(p.getData().equals(object)){
+            if(p.getData().compareTo(object)==0){
                 return index;
             }else{
                 return -1;
