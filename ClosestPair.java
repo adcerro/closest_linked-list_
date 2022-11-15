@@ -24,11 +24,16 @@ import java.util.Random;
 
 public class ClosestPair {
 
-    public static ArrayList<Point> pointList;
+    public static LinkedList pointList;
 
     public static void main(String[] args) {
-        testBrute("brute.txt");
-        testDivide("divide.txt");
+        //testBrute("brute.txt");
+        //testDivide("divide.txt");
+        generate(5,10,10);
+
+        for(Point a : pointList){
+            System.out.println(a.getX()+" , "+a.getY());
+        }
     }
 
     //Performs the test with the BruteForce algorithm
@@ -42,7 +47,7 @@ public class ClosestPair {
                 double[] closest = new double[5];
                 generate(points, (int) Math.pow(4, i), 1000);
                 long start = System.nanoTime();
-                closest = d.bruteForce(pointList);
+                //closest = d.bruteForce(pointList);
                 long end = System.nanoTime();
                 long time = end - start;
                 printer.printf("%s\n", points + " " + d.getIter() + " " + time);
@@ -68,7 +73,7 @@ public class ClosestPair {
                     double[] closest = new double[5];
                     generate(points, (int) Math.pow(4, i), 1000);
                     long start = System.nanoTime();
-                    closest = d.divideAndConquer(pointList);
+                    //closest = d.divideAndConquer(pointList);
                     long end = System.nanoTime();
                     long time = end - start;
                     sumIter = sumIter + d.getIter();
@@ -108,7 +113,7 @@ public class ClosestPair {
      * @param maxY   The maximum possible value of y.
      */
     public static void generate(int points, int maxX, int maxY) {
-        pointList = new ArrayList<>();
+        pointList = new LinkedList();
         Random random = new Random();
         Point a;
         int midpoint = maxX / 2;
@@ -116,18 +121,18 @@ public class ClosestPair {
         while (i <= points / 2) {
             a = new Point(random.nextInt(midpoint), random.nextInt(maxY));
             if (!xValueUsed(pointList, a)) {
-                pointList.add(a);
+                pointList.add(new Node(a,null));
                 i++;
             }
         }
         while (j <= points) {
             a = new Point(midpoint + 1 + random.nextInt(maxX - midpoint), random.nextInt(maxY));
             if (!xValueUsed(pointList, a)) {
-                pointList.add(a);
+                pointList.add(new Node(a,null));
                 j++;
             }
         }
-        Collections.sort(pointList);
+        //Collections.sort(pointList);
     }
 
     /**
@@ -139,8 +144,8 @@ public class ClosestPair {
      * @param point  The point that will be compared with all the elements in the list
      * @param pointList The ArrayList containing all the points
      */
-    public static boolean xValueUsed(ArrayList<Point> pointList, Point point) {
-        for (Point p : pointList) {
+    public static boolean xValueUsed(LinkedList pointList, Point point) {
+        for(Point p: pointList){
             if (p.getX() == point.getX()) {
                 return true;
             }
