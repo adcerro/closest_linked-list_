@@ -2,12 +2,12 @@ package closest.pair;
 
 import java.util.Iterator;
 
-public class LinkedIterator implements Iterator<Point> {
-    LinkedList list;
-    Node current;
-    LinkedIterator(LinkedList li){
-        list = li;
-        current = li.getHead();
+public class LinkedIterator<T> implements Iterator<T> {
+    LinkedList<T> list;
+    Node<T> current;
+    LinkedIterator(LinkedList<T> list){
+        this.list = list;
+        current = list.getHead();
     }
     @Override
     public boolean hasNext() {
@@ -15,9 +15,9 @@ public class LinkedIterator implements Iterator<Point> {
     }
 
     @Override
-    public Point next() {
-        Node result = current;
+    public T next() {
+        T result = current.getData();
         current = current.getNext();
-        return  result.getData();
+        return  result;
     }
 }

@@ -1,27 +1,28 @@
 package closest.pair;
 
-public class Node {
-    private Point data;
-    private Node next;
-    Node(Point p, Node next){
-        data =p;
+public class Node<T> {
+    private T data;
+    private Node<T> next;
+
+    Node(T data, Node<T> next) {
+        this.data = data;
         this.next = next;
     }
 
 
-    public Node getNext() {
+    public Node<T> getNext() {
         return next;
     }
 
-    public void setNext(Node next) {
+    public void setNext(Node<T> next) {
         this.next = next;
     }
 
-    public Point getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Point data) {
+    public void setData(T data) {
         this.data = data;
     }
 }

@@ -18,22 +18,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 public class ClosestPair {
 
-    public static LinkedList pointList;
+    public static LinkedList<Point> pointList;
 
     public static void main(String[] args) {
         //testBrute("brute.txt");
-        //testDivide("divide.txt");
-        generate(5,10,10);
-
-        for(Point a : pointList){
-            System.out.println(a.getX()+" , "+a.getY());
-        }
+        testDivide("divide.txt");
     }
 
     //Performs the test with the BruteForce algorithm
@@ -47,9 +40,10 @@ public class ClosestPair {
                 double[] closest = new double[5];
                 generate(points, (int) Math.pow(4, i), 1000);
                 long start = System.nanoTime();
-                //closest = d.bruteForce(pointList);
+                closest = d.bruteForce(pointList);
                 long end = System.nanoTime();
                 long time = end - start;
+                System.out.println(closest[0]+" "+closest[1]+" , "+closest[2]+" - "+closest[3]+" , "+closest[4]);
                 printer.printf("%s\n", points + " " + d.getIter() + " " + time);
                 d.resetCounter();
             }
@@ -73,7 +67,7 @@ public class ClosestPair {
                     double[] closest = new double[5];
                     generate(points, (int) Math.pow(4, i), 1000);
                     long start = System.nanoTime();
-                    //closest = d.divideAndConquer(pointList);
+                    closest = d.divideAndConquer(pointList);
                     long end = System.nanoTime();
                     long time = end - start;
                     sumIter = sumIter + d.getIter();
@@ -92,28 +86,32 @@ public class ClosestPair {
     public static void create(String name) {
         try {
             File f = new File(name);
-            f.createNewFile();
+            if(f.createNewFile()){
+                System.out.println("Created: "+name+" Successfully!");
+            }else{
+                System.out.println(name+" already exists!");
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     /**
-     * The following void creates and stores de desired amount of points in an
-     * arraylist each point with random x and y coordinates ranging between 0
+     * The following void creates and stores de desired amount of points in a
+     * linkedList each point with random x and y coordinates ranging between 0
      * and 20.<p>
      * When the points with random coordinates are created the algorithm checks if it's x value has been taken by another point,
-     * if it has, the new point is discarded and a new one is generated, if not, then the point gets added to the ArrayList<p>
+     * if it has, the new point is discarded and a new one is generated, if not, then the point gets added to the linkedList<p>
      * Finally, the list is sorted in ascending order according to the x value of the points.<p>
      * input: How many points you want, the maximum x value and the maximum y value for the points.<p>
-     * output: An ArrayList containing the desired amount of points sorted in ascending order.
+     * output: A linkedList containing the desired amount of points sorted in ascending order.
      *
      * @param points The amount of points you want to generate.
      * @param maxX   The maximum possible value of x.
      * @param maxY   The maximum possible value of y.
      */
     public static void generate(int points, int maxX, int maxY) {
-        pointList = new LinkedList();
+        pointList = new LinkedList<>();
         Random random = new Random();
         Point a;
         int midpoint = maxX / 2;
@@ -121,14 +119,14 @@ public class ClosestPair {
         while (i <= points / 2) {
             a = new Point(random.nextInt(midpoint), random.nextInt(maxY));
             if (!xValueUsed(pointList, a)) {
-                pointList.add(new Node(a,null));
+                pointList.add(a);
                 i++;
             }
         }
         while (j <= points) {
             a = new Point(midpoint + 1 + random.nextInt(maxX - midpoint), random.nextInt(maxY));
             if (!xValueUsed(pointList, a)) {
-                pointList.add(new Node(a,null));
+                pointList.add(a);
                 j++;
             }
         }
@@ -136,15 +134,15 @@ public class ClosestPair {
     }
 
     /**
-     * The following void takes a point and compares it's x value with the x value of each point in an ArrayList<p>
+     * The following void takes a point and compares it's x value with the x value of each point in a linkedList<p>
      * If a match is found then returns true, if not, it returns false.<p>
-     * Input: An ArrayList of points and a point<p>
+     * Input: A linkedList of points and a point<p>
      * Output: true or false.
      *
      * @param point  The point that will be compared with all the elements in the list
-     * @param pointList The ArrayList containing all the points
+     * @param pointList The linkedList containing all the points
      */
-    public static boolean xValueUsed(LinkedList pointList, Point point) {
+    public static boolean xValueUsed(LinkedList<Point> pointList, Point point) {
         for(Point p: pointList){
             if (p.getX() == point.getX()) {
                 return true;
