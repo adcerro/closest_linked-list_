@@ -26,6 +26,20 @@ public final class Point implements Comparable<Point> {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof  Point){
+            Point checker = (Point) obj;
+            if(checker.getX()== this.getX() && checker.getY()== this.getY()){
+                return true;
+            }else {
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    @Override
     /**
      * This implementation fo comparable prevents the existence of two points with the same x value<p>
      * Input: Another point to compare<p>

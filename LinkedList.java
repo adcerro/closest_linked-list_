@@ -6,11 +6,17 @@ public class LinkedList<T extends Comparable<T>> implements Iterable<T> {
     private Node<T> head;
     private int size;
 
+    /**
+     * Creates a LinkedList with the provided Object as is first element and head
+     * Input: An object that implements the comparable interface
+     * @param head  The first element of the list
+     * */
     LinkedList(T head) {
         this.head = new Node<T>(head,null);
         size = 1;
     }
 
+    //Creates an empty LinkedList
     LinkedList() {
         this.head = null;
         size = 0;
@@ -20,6 +26,7 @@ public class LinkedList<T extends Comparable<T>> implements Iterable<T> {
         return head;
     }
 
+    //Returns the last node of the list
     public Node<T> getLast() {
         if (head == null) {
             return null;
@@ -31,6 +38,10 @@ public class LinkedList<T extends Comparable<T>> implements Iterable<T> {
             return p;
         }
     }
+    /**
+     *  The following
+     *
+     * */
     public int indexOf(T object){
         int index =0;
         if (head == null) {
