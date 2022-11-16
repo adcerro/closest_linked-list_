@@ -39,7 +39,7 @@ public class LinkedList<T extends Comparable<T>> implements Iterable<T> {
         }
     }
     /**
-     *  The following method searches the object in the LinkedList and returns it's index in the list.<p>
+     *  The following method searches the object in the LinkedList and returns its index in the list.<p>
      *  If the object is not found or the list is empty it returns -1.<p>
      *  Input: The object.<p>
      *  Output: The index of the list for that object.<p>

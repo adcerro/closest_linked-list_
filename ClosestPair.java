@@ -1,6 +1,6 @@
 package closest.pair;
 /*
- * Algorithms and Complexity                                November 9, 2022,
+ * Algorithms and Complexity                                November 15, 2022,
  * IST 4310_01
  * Prof. M. Diaz-Maldonado
  * Estudiante: Alan Daniel Florez Cerro
@@ -18,14 +18,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Random;
 
 public class ClosestPair {
 
     public static LinkedList<Point> pointList;
+    public static Point[] pointArray;
 
     public static void main(String[] args) {
-        //testBrute("brute.txt");
+        testBrute("brute.txt");
         //testDivide("divide.txt");
     }
 
@@ -43,7 +45,6 @@ public class ClosestPair {
                 closest = d.bruteForce(pointList);
                 long end = System.nanoTime();
                 long time = end - start;
-                System.out.println(closest[0]+" "+closest[1]+" , "+closest[2]+" - "+closest[3]+" , "+closest[4]);
                 printer.printf("%s\n", points + " " + d.getIter() + " " + time);
                 d.resetCounter();
             }
@@ -86,10 +87,10 @@ public class ClosestPair {
     public static void create(String name) {
         try {
             File f = new File(name);
-            if(f.createNewFile()){
-                System.out.println("Created: "+name+" Successfully!");
-            }else{
-                System.out.println(name+" already exists!");
+            if (f.createNewFile()) {
+                System.out.println("Created: " + name + " Successfully!");
+            } else {
+                System.out.println(name + " already exists!");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -97,12 +98,11 @@ public class ClosestPair {
     }
 
     /**
-     * The following void creates and stores de desired amount of points in a
-     * linkedList each point with random x and y coordinates ranging between 0
-     * and 20.<p>
+     * The following void creates and stores de desired amount of points in an Array of Points.<p>
      * When the points with random coordinates are created the algorithm checks if it's x value has been taken by another point,
-     * if it has, the new point is discarded and a new one is generated, if not, then the point gets added to the linkedList<p>
-     * Finally, the list is sorted in ascending order according to the x value of the points.<p>
+     * if it has, the new point is discarded and a new one is generated, if not, then the point gets added to the Array<p>
+     * Finally, the Array is sorted in ascending order according to the x value of the points and all it's content gets stored in a
+     * LinkedList.<p>
      * input: How many points you want, the maximum x value and the maximum y value for the points.<p>
      * output: A linkedList containing the desired amount of points sorted in ascending order.
      *
@@ -112,39 +112,45 @@ public class ClosestPair {
      */
     public static void generate(int points, int maxX, int maxY) {
         pointList = new LinkedList<>();
+        pointArray = new Point[points];
         Random random = new Random();
         Point a;
         int midpoint = maxX / 2;
-        int i = 1, j = points / 2 + 1;
-        while (i <= points / 2) {
+        int i = 0, j = points / 2;
+        ;
+        while (i < points / 2) {
             a = new Point(random.nextInt(midpoint), random.nextInt(maxY));
-            if (!xValueUsed(pointList, a)) {
-                pointList.add(a);
+            if (!xValueUsed(pointArray, a)) {
+                pointArray[i] = a;
                 i++;
             }
         }
-        while (j <= points) {
+
+        while (j < points) {
             a = new Point(midpoint + 1 + random.nextInt(maxX - midpoint), random.nextInt(maxY));
-            if (!xValueUsed(pointList, a)) {
-                pointList.add(a);
+            if (!xValueUsed(pointArray, a)) {
+                pointArray[j] = a;
                 j++;
             }
         }
-
+        Arrays.sort(pointArray);
+        for (Point p : pointArray) {
+            pointList.add(p);
+        }
     }
 
     /**
-     * The following void takes a point and compares it's x value with the x value of each point in a linkedList<p>
+     * The following void takes a point and compares it's x value with the x value of each point in an array of points<p>
      * If a match is found then returns true, if not, it returns false.<p>
-     * Input: A linkedList of points and a point<p>
-     * Output: true or false.
+     * Input: An array of points and a point<p>
+     * Output: True or false.
      *
-     * @param point  The point that will be compared with all the elements in the list
-     * @param pointList The linkedList containing all the points
+     * @param point     The point that will be compared with all the elements in the list
+     * @param pointList The Array containing all the points
      */
-    public static boolean xValueUsed(LinkedList<Point> pointList, Point point) {
-        for(Point p: pointList){
-            if (p.getX() == point.getX()) {
+    public static boolean xValueUsed(Point[] pointList, Point point) {
+        for (Point p : pointList) {
+            if (p != null && p.getX() == point.getX()) {
                 return true;
             }
         }
