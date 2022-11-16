@@ -24,7 +24,14 @@ public final class Point implements Comparable<Point> {
     public int getY() {
         return this.y;
     }
-
+/**
+ * This method checks first if an object is an instance of the Point class.<p>
+ * If that's the case it compares the x and y values of both point, if all coincide returns true<p>
+ * If not all values coincide or the object is not an instance of the point class then returns false.<p>
+ * Input: An object(Presumably a point) <p>
+ * Output: Whether the object matches with the point.
+ * @param obj  The object to compare.
+ * */
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof  Point){
