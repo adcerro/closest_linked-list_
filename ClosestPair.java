@@ -27,8 +27,15 @@ public class ClosestPair {
     public static Point[] pointArray;
 
     public static void main(String[] args) {
-        testBrute("brute.txt");
+        //testBrute("brute.txt");
         //testDivide("divide.txt");
+        int points = (int) Math.pow(2, 10);
+        generate(points, (int) Math.pow(4, 10), (int) Math.pow(4, 10)/2);
+        Distance d = new Distance();
+        double[] closest = d.divideAndConquer(pointList);
+        System.out.println(closest[0]+" ->"+closest[1]+" , "+closest[2]+" : "+closest[3]+" , "+closest[4]);
+        double[] closest2 = d.bruteForce(pointList);
+        System.out.println(closest2[0]+" ->"+closest2[1]+" , "+closest2[2]+" : "+closest2[3]+" , "+closest2[4]);
     }
 
     //Performs the test with the BruteForce algorithm
@@ -40,7 +47,7 @@ public class ClosestPair {
             for (int i = 2; i <= 18; i++) {
                 int points = (int) Math.pow(2, i);
                 double[] closest = new double[5];
-                generate(points, (int) Math.pow(4, i), 1000);
+                generate(points, (int) Math.pow(4, i), (int) Math.pow(4, i)/2);
                 long start = System.nanoTime();
                 closest = d.bruteForce(pointList);
                 long end = System.nanoTime();
@@ -66,7 +73,7 @@ public class ClosestPair {
                 long sumTime = 0;
                 for (int j = 1; j <= 4; j++) {
                     double[] closest = new double[5];
-                    generate(points, (int) Math.pow(4, i), 1000);
+                    generate(points, (int) Math.pow(4, i), (int) Math.pow(4, i)/2);
                     long start = System.nanoTime();
                     closest = d.divideAndConquer(pointList);
                     long end = System.nanoTime();
