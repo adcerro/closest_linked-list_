@@ -29,13 +29,6 @@ public class ClosestPair {
     public static void main(String[] args) {
         //testBrute("brute.txt");
         //testDivide("divide.txt");
-        int points = (int) Math.pow(2, 10);
-        generate(points, (int) Math.pow(4, 10), (int) Math.pow(4, 10)/2);
-        Distance d = new Distance();
-        double[] closest = d.divideAndConquer(pointList);
-        System.out.println(closest[0]+" ->"+closest[1]+" , "+closest[2]+" : "+closest[3]+" , "+closest[4]);
-        double[] closest2 = d.bruteForce(pointList);
-        System.out.println(closest2[0]+" ->"+closest2[1]+" , "+closest2[2]+" : "+closest2[3]+" , "+closest2[4]);
     }
 
     //Performs the test with the BruteForce algorithm
