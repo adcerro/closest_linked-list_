@@ -1,6 +1,6 @@
 package closest.pair;
 /*
- * Algorithms and Complexity                                November 15, 2022,
+ * Algorithms and Complexity                                November 23, 2022,
  * IST 4310_01
  * Prof. M. Diaz-Maldonado
  * Estudiante: Alan Daniel Florez Cerro
@@ -28,7 +28,7 @@ public class ClosestPair {
 
     public static void main(String[] args) {
         //testBrute("brute.txt");
-        //testDivide("divide.txt");
+        testDivide("divide.txt");
     }
 
     //Performs the test with the BruteForce algorithm
@@ -37,10 +37,10 @@ public class ClosestPair {
         Distance d = new Distance();
         try {
             PrintWriter printer = new PrintWriter(name);
-            for (int i = 2; i <= 18; i++) {
+            for (int i = 2; i <= 13; i++) {
                 int points = (int) Math.pow(2, i);
                 double[] closest = new double[5];
-                generate(points, (int) Math.pow(4, i), (int) Math.pow(4, i)/2);
+                generate(points, (int) Math.pow(4, i), 1000);
                 long start = System.nanoTime();
                 closest = d.bruteForce(pointList);
                 long end = System.nanoTime();
@@ -60,13 +60,13 @@ public class ClosestPair {
         Distance d = new Distance();
         try {
             PrintWriter printer = new PrintWriter(name);
-            for (int i = 2; i <= 18; i++) {
+            for (int i = 2; i <= 13; i++) {
                 int points = (int) Math.pow(2, i);
                 long sumIter = 0;
                 long sumTime = 0;
                 for (int j = 1; j <= 4; j++) {
                     double[] closest = new double[5];
-                    generate(points, (int) Math.pow(4, i), (int) Math.pow(4, i)/2);
+                    generate(points, (int) Math.pow(4, i), 1000);
                     long start = System.nanoTime();
                     closest = d.divideAndConquer(pointList);
                     long end = System.nanoTime();
