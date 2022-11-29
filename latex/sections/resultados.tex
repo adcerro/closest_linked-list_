@@ -1,0 +1,188 @@
+\section{Resultados}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Puntos & Iteraciones & Tiempo (ms)\\
+    \hline
+    4 & 6 & 32200\\
+    \hline
+    8 & 28 & 43000\\
+    \hline
+    16 & 120 & 89600 \\
+    \hline
+    32 & 496 & 394100\\
+    \hline
+    64 & 2016 & 676500\\
+    \hline
+    128 & 8128 & 1087800\\
+    \hline
+    256 & 32640 & 4671500\\
+    \hline
+    512 & 130816 & 6188600\\
+    \hline
+    1024 & 523776 & 11980800\\
+    \hline
+    2048 & 2096128 & 14932100\\
+    \hline
+    4096 & 8386560 & 38897300\\
+    \hline
+    8192 & 33550336 & 168208400\\
+    \hline
+    16384 & 134209536 & 783966400\\
+    \hline
+    32768 & 536854528 & 2206748300\\
+    \hline
+    65536 & 2147450880 & 9461164400 \\
+    \hline
+    131072 & 8589869056 & 39927323800\\
+    \hline
+    262144 & 34359607296 & 501522026400\\
+    \hline
+    \end{tabular}
+    \caption{Resultados fuerza bruta con ArrayList}
+    \label{tab:bruteAT}
+\end{table}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8, center]{images/bruteArrayList.eps}
+    \caption{ Resultados algoritmo fuerza bruta con ArrayList}
+    \label{fig:bruteAG}
+\end{figure}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Puntos & Iteraciones & Tiempo (ms)\\
+    \hline
+    4 & 6 & 32575\\
+    \hline
+    8 & 20 & 43800\\
+    \hline
+    16 & 40 & 7003950\\
+    \hline
+    32 & 57 & 87775\\
+    \hline
+    64 & 94 & 175200\\
+    \hline
+    128 & 169 & 142300\\
+    \hline
+    256 & 292 & 302800\\
+    \hline
+    512 & 488 & 235725\\
+    \hline
+    1024 & 884 & 451225\\
+    \hline
+    2048 & 1613 & 983525\\
+    \hline
+    4096 & 3099 & 2266750\\
+    \hline
+    8192 & 6187 & 4112150\\
+    \hline
+    16384 & 12297 & 5877875\\
+    \hline
+    32768 & 24528 & 9713350\\
+    \hline
+    65536 & 49266 & 18014550\\
+    \hline
+    131072 & 98349 & 47090775\\
+    \hline
+    262144 & 197843 & 153357475\\
+    \hline
+    \end{tabular}
+    \caption{Resultados divide y vencerás con ArrayList}
+    \label{tab:divideAT}
+\end{table}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8, center]{images/divideArrayList.eps}
+    \caption{Resultados algoritmo divide and conquer con ArrayList}
+    \label{fig:divideAG}
+\end{figure}
+\FloatBarrier
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Puntos & Iteraciones & Tiempo (ms)\\
+    \hline
+    4 & 6 & 63700\\
+    \hline
+    8 & 28 & 161700\\
+    \hline
+    16 & 120 & 274100\\
+    \hline
+    32 & 496 & 667400\\
+    \hline
+    64 & 2016 & 6925600\\
+    \hline
+    128 & 8128 & 3660000\\
+    \hline
+    256 & 32640 & 24735900\\
+    \hline
+    512 & 130816 & 75925300\\
+    \hline
+    1024 & 523776 & 568953600\\
+    \hline
+    2048 & 2096128 & 4732181900\\
+    \hline
+    4096 & 8386560 & 39307846600\\
+    \hline
+    8192 & 33550336 & 322736597800\\
+    \hline
+    16384 & 134209536 & 4852096053400\\
+    \hline
+    \end{tabular}
+    \caption{Resultados fuerza bruta con LinkedList}
+     \label{tab:bruteLT}
+\end{table}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8, center]{images/bruteLinkedList.eps}
+    \caption{Resultados algoritmo fuerza bruta con LinkedList}
+    \label{fig:bruteLG}
+\end{figure}
+\FloatBarrier
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Puntos & Iteraciones & Tiempo (ms)\\
+    \hline
+    4 & 6 & 4446250\\
+    \hline
+    8 & 24 & 26500\\
+    \hline
+    16 & 34 & 35325\\
+    \hline
+    32 & 59 & 98650\\
+    \hline
+    64 & 103 & 225175\\
+    \hline
+    128 & 170 & 254675\\
+    \hline
+    256 & 298 & 259600\\
+    \hline
+    512 & 504 & 760150\\
+    \hline
+    1024 & 885 & 2804800\\
+    \hline
+    2048 & 1608 & 11440125\\
+    \hline
+    4096 & 3112 & 50112050\\
+    \hline
+    8192 & 6187 & 171533850\\
+    \hline
+    16384 & 12311 & 700195150\\
+    \hline
+    \end{tabular}
+    \caption{Resultados algoritmo divide and conquer con LinkedList}
+    \label{tab:divideLT}
+\end{table}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8, center]{images/divideLinkedList.eps}
+    \caption{Resultados algoritmo divide and conquer con LinkedList}
+    \label{fig:divideLG}
+\end{figure}
+\FloatBarrier
